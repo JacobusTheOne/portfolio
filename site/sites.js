@@ -6,6 +6,9 @@ window.PROFILE = {
   name: "Jacobus Jacobs",
   role: "DevOps & Software Engineer",
   photo: "Selfportrait.png", // set to "" to hide
+  // Contact form endpoint (contact-api stack output "ContactUrl"). Set to "" to hide the form.
+  // If this URL changes, update connect-src in netlify.toml too.
+  contactApi: "https://vrlo92aei2.execute-api.us-east-2.amazonaws.com/contact",
   status: "Open to remote opportunities", // set to "" to hide the badge
   intro:
     "I’m a DevOps and Software Engineer with a background in infrastructure automation, CI/CD, backend development, and systems design. I enjoy building reliable, scalable platforms that enable engineering teams to deliver software efficiently, whether through automation, deployment pipelines, or developer tooling.",

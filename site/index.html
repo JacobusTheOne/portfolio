@@ -9,7 +9,19 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="hero">
+  <nav class="topnav" aria-label="Main">
+    <div class="wrap topnav-inner">
+      <a class="brand" href="#top" id="brand"></a>
+      <ul class="navlinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#aws">AWS</a></li>
+        <li><a href="#websites">Websites</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
     <div class="wrap hero-grid">
       <img class="photo" id="photo" alt="" width="200" height="200" decoding="async" hidden>
       <div class="hero-text">
@@ -40,12 +52,42 @@
       <ul class="aws-grid" id="aws-grid"></ul>
     </section>
 
-    <div class="toolbar">
+    <div class="toolbar" id="websites">
       <h2 id="projects-heading">Websites <span class="count" id="count"></span></h2>
       <div class="filters" id="filters" role="group" aria-label="Filter by technology"></div>
     </div>
     <ul class="grid" id="grid" aria-labelledby="projects-heading"></ul>
     <p class="empty" id="empty" hidden>No websites match this filter.</p>
+
+    <section class="contact" id="contact" aria-labelledby="contact-heading" hidden>
+      <div class="contact-intro">
+        <h2 id="contact-heading">Get in touch</h2>
+        <p class="section-intro">Have a project, a role or a question? Send me a message and I'll get back to you.</p>
+      </div>
+      <form id="contact-form">
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" autocomplete="name" maxlength="100" required>
+        </div>
+        <div class="field">
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+        </div>
+        <div class="field">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" rows="6" minlength="10" maxlength="5000" required></textarea>
+        </div>
+        <!-- Honeypot: hidden from people, bots tend to fill it in. -->
+        <div class="hp" aria-hidden="true">
+          <label for="cf-company">Company website</label>
+          <input id="cf-company" name="company" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="form-row">
+          <button type="submit" class="btn primary" id="cf-submit">Send message</button>
+          <p id="cf-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
   </main>
 
   <footer class="wrap footer">

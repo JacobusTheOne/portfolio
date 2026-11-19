@@ -173,4 +173,48 @@
   }
 
   render();
+
+  // Contact form
+  const contactApi = profile.contactApi && safeUrl(profile.contactApi);
+  if (contactApi) {
+    $("contact").hidden = false;
+    const form = $("contact-form");
+    const button = $("cf-submit");
+    const status = $("cf-status");
+    const loadedAt = Date.now(); // the API drops submissions sent faster than a person could type
+
+    const show = (text, kind) => { status.textContent = text; status.className = kind || ""; };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const data = Object.fromEntries(new FormData(form));
+      button.disabled = true;
+      button.textContent = "Sending…";
+      show("");
+      try {
+        const res = await fetch(contactApi, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ ...data, loadedAt }),
+        });
+        const json = await res.json().catch(() => ({}));
+        if (res.status === 429) throw new Error("Too many messages right now. Please try again in a minute.");
+        if (!res.ok || !json.ok) throw new Error(json.error || "Something went wrong. Please try again later.");
+        form.reset();
+        show("Thanks! Your message was sent. I'll get back to you soon.", "ok");
+      } catch (err) {
+        show(err?.name === "TypeError" ?"Couldn't reach the server. Please check your connection and try again." : err.message, "err");
+      } finally {
+        button.disabled = false;
+        button.textContent = "Send message";
+      }
+    });
+  }
+
+  // Navigation: brand name, and hide links to sections that aren't shown.
+  $("brand").textContent = profile.name || "Portfolio";
+  for (const a of document.querySelectorAll(".navlinks a")) {
+    const target = document.getElementById(a.getAttribute("href").slice(1));
+    if (!target || target.hidden) a.parentElement.hidden = true;
+  }
 })();

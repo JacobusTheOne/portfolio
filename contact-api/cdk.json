@@ -1,0 +1,6 @@
+{
+  "app": "npx tsx bin/app.ts",
+  "context": {
+    "siteOrigin": "https://jacobus-jacobs-portfolio.netlify.app"
+  }
+}
