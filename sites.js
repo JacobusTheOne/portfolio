@@ -5,6 +5,7 @@
 window.PROFILE = {
   name: "Jacobus Jacobs",
   role: "DevOps & Software Engineer",
+  photo: "Selfportrait.png", // set to "" to hide
   status: "Open to remote opportunities", // set to "" to hide the badge
   intro:
     "I’m a DevOps and Software Engineer with a background in infrastructure automation, CI/CD, backend development, and systems design. I enjoy building reliable, scalable platforms that enable engineering teams to deliver software efficiently, whether through automation, deployment pipelines, or developer tooling.",

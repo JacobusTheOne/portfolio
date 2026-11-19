@@ -50,6 +50,30 @@ a { color: inherit; }
 
 /* Hero */
 .hero { padding: 72px 0 40px; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 620px) auto;
+  grid-template-areas: "text photo";
+  justify-content: center;
+  align-items: center;
+  gap: 56px;
+}
+.hero-text { grid-area: text; }
+.photo {
+  grid-area: photo;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--surface);
+  box-shadow: 0 0 0 4px var(--surface), 0 0 0 6px var(--accent), var(--shadow);
+}
+.photo[hidden] { display: none; }
+@media (max-width: 720px) {
+  .hero-grid { grid-template-columns: 1fr; grid-template-areas: "photo" "text"; gap: 20px; }
+  .photo { width: 120px; height: 120px; }
+}
+
 .eyebrow {
   margin: 0 0 8px;
   color: var(--accent);

@@ -27,6 +27,13 @@
   $("intro").textContent = profile.intro || "";
   $("footer-name").textContent = profile.name || "";
   $("year").textContent = new Date().getFullYear();
+  const photo = profile.photo && safeUrl(profile.photo);
+  if (photo) {
+    $("photo").src = photo;
+    $("photo").alt = profile.name ? `Portrait of ${profile.name}` : "Portrait";
+    $("photo").onerror = () => { $("photo").hidden = true; };
+    $("photo").hidden = false;
+  }
   if (profile.status) {
     $("status").textContent = profile.status;
     $("status").hidden = false;
