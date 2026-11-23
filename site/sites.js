@@ -7,7 +7,7 @@ window.PROFILE = {
   role: "DevOps & Software Engineer",
   photo: "Selfportrait.png", // set to "" to hide
   // Contact form endpoint (contact-api stack output "ContactUrl"). Set to "" to hide the form.
-  // If this URL changes, update connect-src in netlify.toml too.
+  // If this URL changes, update connect-src in _headers too.
   contactApi: "https://vrlo92aei2.execute-api.us-east-2.amazonaws.com/contact",
   status: "Open to remote opportunities", // set to "" to hide the badge
   intro:

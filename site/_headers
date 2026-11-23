@@ -1,4 +1,4 @@
-# Security headers, read by Cloudflare Pages (and Netlify). Not served as a file.
+# Security headers, read by Cloudflare. Not served as a file.
 # connect-src allows the contact form API only. Update it if the API URL changes.
 /*
   Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https: data:; connect-src 'self' https://vrlo92aei2.execute-api.us-east-2.amazonaws.com; base-uri 'self'; form-action 'none'; frame-ancestors 'none'

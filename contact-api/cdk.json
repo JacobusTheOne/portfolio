@@ -2,7 +2,7 @@
   "app": "npx tsx bin/app.ts",
   "context": {
     "siteOrigins": [
-      "https://jacobus-jacobs-portfolio.netlify.app"
+      "https://portfolio.jacobus-jacobs1.workers.dev"
     ]
   }
 }

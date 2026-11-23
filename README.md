@@ -2,19 +2,18 @@
 
 One-page portfolio: profile, About, AWS experience, my websites as cards, and a contact form.
 
-**Live:** https://jacobus-jacobs-portfolio.netlify.app
+**Live:** https://portfolio.jacobus-jacobs1.workers.dev
 
 ```
-site/          The website (plain HTML/CSS/JS, no build step) — published by Cloudflare Pages
-site/_headers  Security headers (CSP etc.), read by Cloudflare Pages; not served as a file
+site/          The website (plain HTML/CSS/JS, no build step) — published by Cloudflare (Workers static assets)
+site/_headers  Security headers (CSP etc.), read by Cloudflare; not served as a file
 contact-api/   Contact form backend on AWS (CDK, TypeScript) — never published
-netlify.toml   Old Netlify config, kept until the move to Cloudflare Pages is finished
 ```
 
 ## Branches
 
 - `dev` — day-to-day work. Pushed to GitHub as a backup; it does **not** deploy.
-- `main` — the live site. Every push to `main` deploys to Cloudflare Pages.
+- `main` — the live site. Every push to `main` deploys to Cloudflare.
 
 ## Edit the content
 
@@ -38,13 +37,13 @@ the API only accepts requests from it.)
 
 ## Deploy the website
 
-Cloudflare Pages is connected to this repo: production branch `main`, build command empty,
-build output directory `site`, preview deployments off. To release:
+Cloudflare (Workers Builds) is connected to this repo: production branch `main`, only `site/`
+is published, builds for other branches off. To release:
 
 ```bash
 git switch main
 git merge dev
-git push                   # Cloudflare Pages deploys main
+git push                   # Cloudflare deploys main
 git switch dev
 ```
 
