@@ -104,10 +104,10 @@ window.SITES = [
   },
   {
     title: "Rent Rush",
-    url: "https://rent-rush-715.netlify.app",
+    url: "https://rent-rush.jacobus-jacobs1.workers.dev",
     description:
       "A real-time multiplayer property-trading board game for 2–4 players: lobby, private tables with invite links, guest play, trading and table chat, with every move validated on the server.",
-    tags: ["Next.js", "TypeScript", "AWS", "AWS Amplify", "Netlify"],
+    tags: ["Next.js", "TypeScript", "AWS", "AWS Amplify", "Cloudflare"],
     code: "https://github.com/JacobusTheOne/rent-rush",
     image: "",
     featured: true,
