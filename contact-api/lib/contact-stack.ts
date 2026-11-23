@@ -17,7 +17,8 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 
 export interface ContactStackProps extends StackProps {
   notifyEmail: string;
-  siteOrigin: string;
+  /** Sites allowed to call the API from a browser (CORS), e.g. the Cloudflare Pages URL. */
+  siteOrigins: string[];
 }
 
 export class ContactStack extends Stack {
@@ -70,7 +71,7 @@ export class ContactStack extends Stack {
       description: "Portfolio contact form",
       createDefaultStage: false,
       corsPreflight: {
-        allowOrigins: [props.siteOrigin],
+        allowOrigins: props.siteOrigins,
         allowMethods: [apigw.CorsHttpMethod.POST],
         allowHeaders: ["content-type"],
         maxAge: Duration.days(1),

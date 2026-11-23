@@ -5,10 +5,16 @@ One-page portfolio: profile, About, AWS experience, my websites as cards, and a 
 **Live:** https://jacobus-jacobs-portfolio.netlify.app
 
 ```
-site/          The website (plain HTML/CSS/JS, no build step) — published by Netlify
+site/          The website (plain HTML/CSS/JS, no build step) — published by Cloudflare Pages
+site/_headers  Security headers (CSP etc.), read by Cloudflare Pages; not served as a file
 contact-api/   Contact form backend on AWS (CDK, TypeScript) — never published
-netlify.toml   Netlify config: publishes site/, security headers
+netlify.toml   Old Netlify config, kept until the move to Cloudflare Pages is finished
 ```
+
+## Branches
+
+- `dev` — day-to-day work. Pushed to GitHub as a backup; it does **not** deploy.
+- `main` — the live site. Every push to `main` deploys to Cloudflare Pages.
 
 ## Edit the content
 
@@ -32,9 +38,14 @@ the API only accepts requests from it.)
 
 ## Deploy the website
 
+Cloudflare Pages is connected to this repo: production branch `main`, build command empty,
+build output directory `site`, preview deployments off. To release:
+
 ```bash
-git push
-netlify deploy --prod      # publishes site/ (see netlify.toml)
+git switch main
+git merge dev
+git push                   # Cloudflare Pages deploys main
+git switch dev
 ```
 
 ## Contact form backend
@@ -65,7 +76,8 @@ NOTIFY_EMAIL=you@example.com npm run deploy
 `NOTIFY_EMAIL` is the digest recipient. It's passed at deploy time so it never ends up in this
 public repo. After the first deploy, confirm the subscription email from AWS Notifications.
 If the API URL ever changes, update `contactApi` in `site/sites.js` and `connect-src` in
-`netlify.toml`.
+`site/_headers`. If the site's address changes, update `siteOrigins` in `contact-api/cdk.json`
+and redeploy, or the browser blocks the form (CORS).
 
 Read messages without waiting for the digest:
 

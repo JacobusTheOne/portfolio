@@ -15,7 +15,8 @@ new ContactStack(app, "PortfolioContact", {
   env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: "us-east-2" },
   description: "Portfolio contact form: HTTP API, Lambda, DynamoDB and a daily SNS email digest",
   notifyEmail,
-  siteOrigin: app.node.tryGetContext("siteOrigin"),
+  // A list so two hosts can work side by side while moving the site (cdk.json "siteOrigins").
+  siteOrigins: [app.node.tryGetContext("siteOrigins")].flat(),
 });
 
 Tags.of(app).add("Project", "portfolio");
