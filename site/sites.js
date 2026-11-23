@@ -94,10 +94,10 @@ window.PROFILE = {
 window.SITES = [
   {
     title: "Mastermind",
-    url: "https://mastermind-game-789.netlify.app",
+    url: "https://mastermind.jacobus-jacobs1.workers.dev",
     description:
       "Crack the secret color code against the clock. Three difficulty levels, sign-in, and public leaderboards with server-side anti-cheat.",
-    tags: ["Next.js", "TypeScript", "AWS", "AWS Amplify", "Netlify"],
+    tags: ["Next.js", "TypeScript", "AWS", "AWS Amplify", "Cloudflare"],
     code: "https://github.com/JacobusTheOne/mastermind-game",
     image: "",
     featured: true,
